@@ -4,6 +4,15 @@
 #include<QDebug>
 #include <QColorDialog>
 #include<QColor>
+#include "wiringPi.h"
+#include"softPwm.h"
+
+#define greenPin 21
+#define bluePin 22
+#define redPin 23
+#define PWMMAX 100
+#define PWMMIN 0
+
 
 
 Dialog::Dialog(QWidget *parent)
@@ -11,6 +20,10 @@ Dialog::Dialog(QWidget *parent)
     , ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    wiringPiSetup();
+    softPwmCreate(greenPin, PWMMIN, PWMMAX);
+    softPwmCreate(redPin, PWMMIN, PWMMAX);
+    softPwmCreate(bluePin, PWMMIN, PWMMAX);
 }
 
 Dialog::~Dialog()
@@ -80,4 +93,40 @@ void Dialog::on_pushButton_2_clicked()
         ui->spinBox_2->setValue(redVal);
         ui->spinBox_3->setValue(greenVal);
     }
+}
+
+void Dialog::on_horizontalSlider_2_valueChanged(int value)
+{
+    softPwmWrite(redPin, value);
+    QColor color(red,gree,blue);
+    int colValue = value*255/100;
+    red = colVal;
+    QColor color(red,gree,blue);
+    QString qss = QString("background-color: %1").arg(color.name());
+
+    ui->pushButton_3->setStyleSheet(qss);
+}
+
+void Dialog::on_horizontalSlider_3_valueChanged(int value)
+{
+    softPwmWrite(greenPin, value);
+    QColor color(red,gree,blue);
+    int colValue = value*255/100;
+    green = colVal;
+    QColor color(red,gree,blue);
+    QString qss = QString("background-color: %1").arg(color.name());
+
+    ui->pushButton_3->setStyleSheet(qss);
+}
+
+void Dialog::on_horizontalSlider_valueChanged(int value)
+{
+    softPwmWrite(bluePin, value);
+    QColor color(red,gree,blue);
+    int colValue = value*255/100;
+    blue = colVal;
+    QColor color(red,gree,blue);
+    QString qss = QString("background-color: %1").arg(color.name());
+
+    ui->pushButton_3->setStyleSheet(qss);
 }
