@@ -53,6 +53,16 @@ sudo apt-get install qtcreator
 
 After the instalation is done, you will need to set up compiler in the QT creaton software.
 
+## Run localy
 
+To run this project start up your QT creator, open the project and press the green arrob button on the left bottom corner. If the project is not compatible with your QT, create a project and then import source files from this file. 
 
+### Pin configuration
 
+Configure these following constants in dialog.cpp file to change pins which are used to control red, gree, and blue chanels
+
+`greenPin`
+
+`bluePin`
+
+`redPin`
