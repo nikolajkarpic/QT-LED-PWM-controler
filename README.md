@@ -1,5 +1,5 @@
 # QT-LED-PWM-controler
-School project, where a RGB led diode is controled via Raspberry Pi running a QT probram
+School project, where a RGB led diode is controled via Raspberry Pi running a QT program
 
 ## Components used
 Main component of this poject is SBC (single board computer) Raspberry Pi 2B, which is used to run QT program to control the led. 
